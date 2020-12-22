@@ -27,9 +27,8 @@ def scale(n: int, img: Image):
     """scale image by n """
     w, h = img.size
     ps = img.load()
-    nimg = Image.new(
-        "RGB", (img.width * n, img.height * n), "black"
-    )  # create a new black image
+    # create a new black image
+    nimg = Image.new("RGB", (img.width * n, img.height * n), "black")
     nps = nimg.load()
     for i in range(w):
         for j in range(h):
@@ -61,7 +60,7 @@ def smooth(c: int, img: Image):
             img.putpixel((x, y), (r // cnt, g // cnt, b // cnt))
 
 
-def test_transform():
+def xtest_transform():
     path = "./images/LutherBellPic.jpg"
     img = Image.open(path)
 
@@ -83,3 +82,76 @@ def test_transform():
     # smooth(2, img)
 
     img.show()
+
+
+def xtest_matrix():
+    # создает matrix из нулей заданной ширины и высоты
+    def zero_matrix(width, height) -> list:
+        """creates matrix of zeroes, of given width and height"""
+        NotImplemented
+        return [[0] * width for _ in range(height)]
+
+    assert zero_matrix(1, 1) == [[0]]
+    assert zero_matrix(2, 3) == [
+        [0, 0],
+        [0, 0],
+        [0, 0],
+    ]
+
+    # check assignment
+    a = zero_matrix(3, 3)
+    a[0][0] = 1
+    assert a[0][0] == 1
+    assert a[1][0] != 1
+    assert a[0][1] != 1
+
+    # делает копию matrix заданной ширины и высоты
+    def copy(a: list, width: int, height: int) -> list:
+        b = zero_matrix(width, height)
+        for i in range(width):
+            for j in range(height):
+                b[j][i] = a[j][i]
+
+        return b
+
+    a = zero_matrix(2, 3)
+    a[0][0] = 1
+    b = copy(a, width=2, height=3)
+    b[1][0] = 2
+    assert a[0][0] == 1
+    assert b[0][0] == 1
+    assert b[1][0] == 2
+    assert a[1][0] == 0
+
+    # увеличивает matrix заданной ширины и высоты в factor раз
+    def scale(a: list, width: int, height: int, factor: int) -> list:
+        b = zero_matrix(width * factor, height * factor)
+        for i in range(height):
+            for j in range(width):
+                for k in range(factor):
+                    for l in range(factor):
+                        b[i * factor + k][j * factor + l] = a[i][j]
+        return b
+
+    a = [[1]]
+    b = scale(a, 1, 1, 1)
+    assert b == [[1]]
+
+    b = scale(a, 1, 1, 3)
+    assert b == [
+        [1, 1, 1],
+        [1, 1, 1],
+        [1, 1, 1],
+    ]
+
+    a = [[1, 2, 3], [4, 5, 6]]
+    b = scale(a, 3, 2, 3)
+    # print(b)
+    assert len(b) == 2 * 3
+    assert len(b[0]) == 3 * 3
+    assert b[1 * 3][2 * 3] == 6
+
+
+#
+
+#
