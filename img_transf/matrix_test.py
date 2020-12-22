@@ -1,7 +1,7 @@
 # создает matrix из нулей заданной ширины и высоты
 def zero_matrix(width, height) -> list:
     """creates matrix of zeroes, of given width and height"""
-    return [[0] * width for _ in range(height)]
+    NotImplemented
 
 
 def test_zero():
@@ -23,11 +23,7 @@ def test_zero():
 # делает копию matrix заданной ширины и высоты
 def copy(a: list, width: int, height: int) -> list:
     b = zero_matrix(width, height)
-    for i in range(width):
-        for j in range(height):
-            b[j][i] = a[j][i]
-
-    return b
+    NotImplemented
 
 
 def test_copy():
@@ -44,12 +40,7 @@ def test_copy():
 # увеличивает matrix заданной ширины и высоты в factor раз
 def scale(a: list, width: int, height: int, factor: int) -> list:
     b = zero_matrix(width * factor, height * factor)
-    for i in range(height):
-        for j in range(width):
-            for k in range(factor):
-                for l in range(factor):
-                    b[i * factor + k][j * factor + l] = a[i][j]
-    return b
+    NotImplemented
 
 
 def test_scale():
