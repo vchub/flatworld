@@ -131,3 +131,9 @@ def test_rm():
     path = "./images/LutherBellPic.jpg"
     img = rm_red(path)
     img.show()
+
+
+
+# git config --global user.name "nnng"
+# git config --global user.email "nnng@gmail.com"
+
