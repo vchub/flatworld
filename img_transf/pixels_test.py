@@ -25,4 +25,3 @@ if __name__ == "__main__":
     path = "./images/LutherBellPic.jpg"
     img = rm_red(path)
     img.show()
-
