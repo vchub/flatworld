@@ -20,5 +20,11 @@ checkout your working branch from repository
 
 				git checkout nik
 
+
 push updates to repository
+
 				git push
+
+checkout new branch from from repository
+
+				git checkout -t origin/nik
