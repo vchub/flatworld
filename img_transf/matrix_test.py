@@ -3,8 +3,6 @@ def zero_matrix(width, height) -> list:
     """creates matrix of zeroes, of given width and height"""
     return [[0 for _ in range(width)] for _ in range(height)]
 
-    
-
 
 def test_zero():
     assert zero_matrix(1, 1) == [[0]]
@@ -28,7 +26,7 @@ def copy(a: list, width: int, height: int) -> list:
     NotImplemented
 
 
-def xtest_copy():
+def test_copy():
     a = zero_matrix(2, 3)
     a[0][0] = 1
     b = copy(a, width=2, height=3)
