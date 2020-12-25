@@ -1,5 +1,6 @@
-import turtle
 import random
+import turtle
+
 wn = turtle.Screen()
 t = turtle.Turtle()
 t.speed(10)
@@ -27,11 +28,11 @@ def random_step(t) -> int:
     return s
 
 
-
 def continue_step(t, s):
     t.forward(s)
 
-def find_dir(t,a):
+
+def find_dir(t, a):
     s = 0
     while t.distance(food) > a:
         s = random_step(t)
@@ -39,32 +40,27 @@ def find_dir(t,a):
             t.back(s)
     return s
 
+
 def dist():
     return t.distance(food)
 
 
 def run_world(h):
-    init(t,food)
+    init(t, food)
     a = t.distance(food)
-    # s = random_step(t)
+
+    # this step should decrease when you closer to the food
     s = 25
     while dist() > h:
         t.forward(s)
         # print(a, dist())
         if a < dist():
-            s = find_dir(t,a)
+            s = find_dir(t, a)
         a = dist()
-
-
-
 
     # продолжает шагать,пока запах не станет меньше
     # если станет меньше,ищет новое направление
     # когда найдёт,продолжает шагать(строка 1)
-
-    
-    
-
 
     # init(t, food)
 
