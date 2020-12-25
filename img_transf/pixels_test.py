@@ -9,7 +9,7 @@ def rm_red(path) -> Image:
     ps = img.load()
     for i in range(h):
         for j in range(w):
-            r, g, b = ps[i, j]
+            _, g, b = ps[i, j]
             ps[i, j] = (0, g, b)
 
     return img
